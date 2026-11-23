@@ -1,0 +1,101 @@
+name: pawpop-12h
+
+# Every 12 hours: 05:00 UTC = 09:00 Dubai, 17:00 UTC = 21:00 Dubai.
+# GitHub schedules can drift a few minutes — the pipeline targets the NEXT
+# Dubai slot via YouTube publishAt, so drift never moves the publish time.
+on:
+  schedule:
+    - cron: "0 5 * * *"
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+    inputs:
+      produce_budget_min:
+        description: "Production budget in minutes (default 265)"
+        default: "265"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pawpop-pipeline
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+
+      - name: Restore segment cache
+        uses: actions/cache/restore@v4
+        with:
+          path: work/assets
+          key: seg-${{ github.run_id }}
+          restore-keys: |
+            seg-
+
+      - name: Seed EP004 assets (first run only)
+        run: |
+          if [ ! -d work/assets/ep004/clips ] || [ -z "$(ls -A work/assets/ep004/clips 2>/dev/null)" ]; then
+            mkdir -p work/assets
+            curl -sL -o /tmp/ep004_seed.tar.gz \
+              "https://github.com/${{ github.repository }}/releases/download/seed-assets/ep004_seed.tar.gz"
+            tar -xzf /tmp/ep004_seed.tar.gz -C work/assets
+            echo "seeded: $(find work/assets/ep004 -type f | wc -l) files"
+          else
+            echo "cache already present, skip seed"
+          fi
+
+      - name: Run 12h cycle (produce -> assemble -> QC -> publish)
+        env:
+          ZAI_BASE_URL: ${{ secrets.ZAI_BASE_URL }}
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          ZAI_CHAT_ID: ${{ secrets.ZAI_CHAT_ID }}
+          ZAI_USER_ID: ${{ secrets.ZAI_USER_ID }}
+          ZAI_TOKEN: ${{ secrets.ZAI_TOKEN }}
+          KIE_API_KEY: ${{ secrets.KIE_API_KEY }}
+          PIXVERSE_API_KEY: ${{ secrets.PIXVERSE_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_CHANNEL_ID: ${{ secrets.YT_CHANNEL_ID }}
+          PAWPOP_PRODUCE_BUDGET_MIN: ${{ github.event.inputs.produce_budget_min || '265' }}
+        run: |
+          python -m studio.pipeline --run 2>&1 | tee pipeline_run.log
+
+      - name: Save segment cache (always)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: work/assets
+          key: seg-${{ github.run_id }}
+
+      - name: Commit state back
+        if: always()
+        run: |
+          git config user.name "pawpop-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state/state.json || true
+          git diff --cached --quiet && echo "state unchanged" && exit 0
+          git commit -m "cycle $(date -u +%FT%TZ): state update [skip ci]"
+          git push
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## PAWPOP 12h cycle"
+            echo '```'
+            tail -c 3000 pipeline_run.log 2>/dev/null || echo "(no log)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

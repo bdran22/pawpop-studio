@@ -1,0 +1,12 @@
+{
+ "episodes": {
+  "EP004": {
+   "status": "delegated",
+   "note": "sandbox finisher fleet owns EP004 production+publish (cron jobs 544218-544358, upload target 2026-11-24 09:00 Dubai). GitHub agent must NOT produce or publish EP004 - it starts at EP005. This avoids duplicate uploads while both sides share the same Z.ai quota."
+  }
+ },
+ "log": [
+  "[2026-11-23 16:30] agent migrated to GitHub hosting by owner request",
+  "[2026-11-23 16:50] EP004 delegated to sandbox finisher fleet; GitHub owns EP005+ (duplicate-upload protection)"
+ ]
+}

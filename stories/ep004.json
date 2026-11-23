@@ -1,0 +1,1407 @@
+{
+ "ep": "EP004",
+ "title": "The Package Was for Luna | Funny Dog and Cat Surprise Story",
+ "style_prefix": "Pixar-style 3D cartoon: Biscuit, a cream French Bulldog puppy with a blue collar; Luna, a tiny fluffy white kitten with big green eyes; Max, a golden retriever; Maple Street porch setting",
+ "characters": [
+  "Biscuit the cream French Bulldog puppy",
+  "Luna the tiny white kitten",
+  "Max the golden retriever"
+ ],
+ "vo": {
+  "seg01": "This is Biscuit. And THIS... is the biggest box Maple Street has ever seen.",
+  "seg02": "Every morning, Biscuit checks the porch. Newspaper. Sometimes a leaf. Today... a mountain.",
+  "seg03": "It stood taller than the mailbox. Taller than the plant. Taller than Biscuit's biggest dream.",
+  "seg04": "And Biscuit had a theory. A big box means a big gift. And the biggest gift... goes to the best dog. Flawless.",
+  "seg05": "He pressed his nose to the cardboard. Cardboard. Wonder. Adventure. And then, from inside, something went...",
+  "seg06": "Squeak. A squeak means toy. Toys mean dog. This box was basically his. Signed, sealed, squeaked.",
+  "seg07": "Then a shadow crossed the porch. Luna. The smallest cat on the street, with the smuggest smile on record.",
+  "seg08": "She circled the box once. Twice. Then she sat on it. Cats sit on what they own. That's the law.",
+  "seg09": "Biscuit disagreed. Boxes are dog property. Universal rule. Probably written down somewhere.",
+  "seg10": "So Max arrived. Ninety pounds of backup and wisdom. He read the shipping label out loud.",
+  "seg11": "L-U-N-A. Luna. Biscuit tilted his head. Luna... Biscuit's third favorite word. After ball. And breakfast.",
+  "seg12": "But no. It was HER name. On HIS box. This was now officially a situation.",
+  "seg13": "So Biscuit made a plan worthy of his best genius. Guard the box. Until further notice.",
+  "seg14": "Luna made a plan too. She placed one tiny paw on the cardboard... and did The Eyes.",
+  "seg15": "Max held up the score. Cat: ten. Puppy: nine point nine. Heartbreak... by a decimal.",
+  "seg16": "So Biscuit escalated. He sat ON the box. Dogs claim what they sit on. Ask any dog.",
+  "seg17": "And that's when the box... SCRITCHED. From the inside. Both of them froze.",
+  "seg18": "Max hid behind Biscuit. All ninety pounds of him. Very heroic.",
+  "seg19": "Biscuit pressed one brave ear to the cardboard. And heard it. A purr. The box was PURRING.",
+  "seg20": "A purring box. Biscuit's fur stood up in eleven directions. A monster. A squeaking, purring monster.",
+  "seg21": "Luna, cool as always, tapped the box twice. Knock knock. Silence. Then... a little bell rang.",
+  "seg22": "A bell. A squeak. A purr. Biscuit updated his theory. The box contained the world's smallest burglar.",
+  "seg23": "The porch door swung open. Three guilty faces spun around. Max pointed at Biscuit. Biscuit pointed at Luna. Luna pointed at the box.",
+  "seg24": "Nobody had touched anything. Nobody believed anybody. Great teamwork.",
+  "seg25": "Then the first flap opened. And out into the morning light poked... one single whisker.",
+  "seg26": "And the box became THE TOWER. A carpeted skyscraper. With platforms. A hammock. A dangling ball. And a bell.",
+  "seg27": "The monster was a squeaky mouse on a spring. The burglar was a bell. The purr stayed a mystery.",
+  "seg28": "It was a cat tower. Ordered for Luna's birthday. The biggest gift on the street... was never for Biscuit.",
+  "seg29": "Biscuit's ears went down. His tail hit zero. And the bravest puppy on Maple Street did the slowest sad walk in history.",
+  "seg30": "Luna climbed her kingdom. Level by level. Like a queen with nine lives and zero modesty.",
+  "seg31": "The top perch had the best window on the street. Bird TV. All day. Every day.",
+  "seg32": "But from the top, Luna saw the saddest sight on the whole street. A tower is just furniture. A kingdom... needs a knight.",
+  "seg33": "She tapped the middle platform. Twice. Room for one more.",
+  "seg34": "Pawpop. Every paw has a story. See you on the next adventure. Subscribe so you never miss one.",
+  "seg35": "Biscuit climbed like a puppy climbs. One paw. A think. Another paw. A wobble. A heroic recovery.",
+  "seg36": "Max coached from below with very loud safety instructions that nobody asked for.",
+  "seg37": "The platform wobbled. Held. Wobbled. Held. And just like that, the tower had its knight.",
+  "seg38": "The hammock was too small for Max. But the big empty box was perfect. Max got a fort. Everyone got a win.",
+  "seg39": "That afternoon, Maple Street saw something brand new. A cat in her tower. A puppy on the platform. A retriever in a box.",
+  "seg40": "Because the best surprises are not the ones you keep. They're the ones you share.",
+  "seg41": "Luna's tail curled gently around Biscuit's collar. Tiny. Royal. Exactly how she says thank you.",
+  "seg42": "Bird TV had a season finale at sunset. Nobody moved until the stars came out.",
+  "seg43": "Max snored happily from his cardboard fort. The porch had never been fuller.",
+  "seg44": "And the biggest box on Maple Street became the smallest castle, with the biggest heart."
+ },
+ "shots": [
+  {
+   "id": "S01",
+   "kf": "K01_hook",
+   "seg": "seg01",
+   "reuse": 0,
+   "kf_prompt": "",
+   "motion": "Gentle cinematic character motion, warm light, subtle camera.",
+   "trans": "cut"
+  },
+  {
+   "id": "S02",
+   "kf": "K02_boxdawn",
+   "seg": "seg02",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "Golden sunrise light sweeps across the porch, the giant cardboard box casts a long moving shadow, dust motes drift and leaves shimmer; serene slow cinematic motion, no camera shake.",
+   "trans": "cut"
+  },
+  {
+   "id": "S03",
+   "kf": "K02_boxdawn",
+   "seg": "seg03",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "Golden sunrise light sweeps across the porch, the giant cardboard box casts a long moving shadow, dust motes drift and leaves shimmer; serene slow cinematic motion, no camera shake.",
+   "trans": "cut"
+  },
+  {
+   "id": "S04",
+   "kf": "K03_theory",
+   "seg": "seg04",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The cream French Bulldog puppy puffs his chest and lifts his chin higher with a smug certain smile, paw planted on the box, tail wagging proudly; comedic confident motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S05",
+   "kf": "K04_sniff",
+   "seg": "seg05",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The puppy's squishy nose sniffs the cardboard and pulls back slightly, huge brown eyes blink and widen with wonder, dust sparkles float in the sunbeam; gentle comedic close-up.",
+   "trans": "cut"
+  },
+  {
+   "id": "S06",
+   "kf": "K05_squeak",
+   "seg": "seg06",
+   "reuse": 0,
+   "kf_prompt": "",
+   "motion": "The cream French Bulldog puppy hops back from the cardboard box in delighted shock, ears flying, tail wagging fast, the box wobbles once; bouncy comedic motion, lively.",
+   "trans": "cut"
+  },
+  {
+   "id": "S07",
+   "kf": "K06_lunaarrive",
+   "seg": "seg07",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The tiny white kitten steps onto the welcome mat with a smug little smile, tail up like a flag, taking two elegant steps; graceful smooth cinematic motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S08",
+   "kf": "K07_lunasits",
+   "seg": "seg08",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The white kitten settles regally on top of the cardboard box, wrapping her tail around her paws, eyes half closing in satisfaction; elegant slow queen-like motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S09",
+   "kf": "K08_guard",
+   "seg": "seg09",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The puppy stands wide-legged like a tiny security guard, chest out, ears twitching alertly, serious squint deepening; comedic tense guard motion.",
+   "trans": "fade"
+  },
+  {
+   "id": "S10",
+   "kf": "K11_labelpoint",
+   "seg": "seg10",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The golden retriever points his nose at the shipping label while the puppy leans in squinting cross-eyed and tilts his head; comedic curious motion, gentle breeze.",
+   "trans": "cut"
+  },
+  {
+   "id": "S11",
+   "kf": "K11_labelpoint",
+   "seg": "seg11",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The golden retriever points his nose at the shipping label while the puppy leans in squinting cross-eyed and tilts his head; comedic curious motion, gentle breeze.",
+   "trans": "cut"
+  },
+  {
+   "id": "S12",
+   "kf": "K10_maxjudge",
+   "seg": "seg12",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The golden retriever raises one paw mid-decision and nods wisely while the hopeful puppy and the smug kitten react beside him; warm comedic judging motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S13",
+   "kf": "K12_planpose",
+   "seg": "seg13",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The puppy strokes his chin with one paw like a detective, eyebrows rising, eyes darting at the box; comedic genius-plan motion in dramatic side light.",
+   "trans": "cut"
+  },
+  {
+   "id": "S14",
+   "kf": "K09_paweyes",
+   "seg": "seg14",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The white kitten places her paw on the box and blinks giant sparkling pleading eyes, head tilting slowly, whiskers twitching; irresistible cute motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S15",
+   "kf": "K10_maxjudge",
+   "seg": "seg15",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The golden retriever raises one paw mid-decision and nods wisely while the hopeful puppy and the smug kitten react beside him; warm comedic judging motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S16",
+   "kf": "K13_sitclaim",
+   "seg": "seg16",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The puppy perches proudly on the bottom flap of the box, chest inflated, tail wagging fast, eyes closed in triumph; comedic victory motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S17",
+   "kf": "K14_scritch",
+   "seg": "seg17",
+   "reuse": 0,
+   "kf_prompt": "",
+   "motion": "The cardboard box wobbles and shakes; the puppy and the white kitten freeze mid-gasp, fur puffing up, eyes going huge; comedic startled motion, no camera shake.",
+   "trans": "fade"
+  },
+  {
+   "id": "S18",
+   "kf": "K15_maxhide",
+   "seg": "seg18",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The giant golden retriever hides behind the tiny puppy, his nervous head peeking over and glancing left and right; comedic size-contrast motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S19",
+   "kf": "K16_earlisten",
+   "seg": "seg19",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The puppy presses one ear against the cardboard box, eyes squeezed shut in deep concentration, one paw braced, holding his breath; tense comedic suspense motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S20",
+   "kf": "K17_theorymonster",
+   "seg": "seg20",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The puppy rears back with wild shocked eyes talking to the box while the kitten grooms her paw completely unimpressed; exaggerated comedic contrast motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S21",
+   "kf": "K18_lunatap",
+   "seg": "seg21",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The kitten taps the box twice with one elegant paw while the puppy trembles behind the mailbox; suspense then relief comedic motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S22",
+   "kf": "K17_theorymonster",
+   "seg": "seg22",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The puppy rears back with wild shocked eyes talking to the box while the kitten grooms her paw completely unimpressed; exaggerated comedic contrast motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S23",
+   "kf": "K10_maxjudge",
+   "seg": "seg23",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The golden retriever raises one paw mid-decision and nods wisely while the hopeful puppy and the smug kitten react beside him; warm comedic judging motion.",
+   "trans": "fade"
+  },
+  {
+   "id": "S24",
+   "kf": "K14_scritch",
+   "seg": "seg24",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The cardboard box wobbles and shakes; the puppy and the white kitten freeze mid-gasp, fur puffing up, eyes going huge; comedic startled motion, no camera shake.",
+   "trans": "cut"
+  },
+  {
+   "id": "S25",
+   "kf": "K19_whisker",
+   "seg": "seg25",
+   "reuse": 0,
+   "kf_prompt": "",
+   "motion": "The cardboard box flap trembles slightly open and one white cat whisker twitches in the warm sunbeam, dust sparkles drift and shimmer; gentle tense mystery motion, slow cinematic push-in, no camera shake.",
+   "trans": "cut"
+  },
+  {
+   "id": "S26",
+   "kf": "K20_towerreveal",
+   "seg": "seg26",
+   "reuse": 0,
+   "kf_prompt": "",
+   "motion": "Gentle cinematic character motion, warm light, subtle camera.",
+   "trans": "cut"
+  },
+  {
+   "id": "S27",
+   "kf": "K21_mousebell",
+   "seg": "seg27",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The plush squeaky mouse on its spring jiggles gently and the tiny silver bell swings and glints; playful macro cinematic motion, soft bokeh, no characters.",
+   "trans": "cut"
+  },
+  {
+   "id": "S28",
+   "kf": "K22_lunacheek",
+   "seg": "seg28",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The white kitten rubs her cheek against the tower corner claiming it with love while the puppy watches with drooping ears and sad shiny eyes; bittersweet gentle motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S29",
+   "kf": "K23_sadwalk",
+   "seg": "seg29",
+   "reuse": 0,
+   "kf_prompt": "",
+   "motion": "The cream French Bulldog puppy trudges slowly away with drooping ears and a lowered tail while the white kitten watches from the tower platform; slow gentle bittersweet cinematic motion.",
+   "trans": "fade"
+  },
+  {
+   "id": "S30",
+   "kf": "K24_queenclimb",
+   "seg": "seg30",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The white kitten climbs the carpeted cat tower level by level like a graceful queen, tail flowing, elegant paw placement; smooth ascending cinematic motion.",
+   "trans": "fade"
+  },
+  {
+   "id": "S31",
+   "kf": "K25_topperch",
+   "seg": "seg31",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The white kitten sits on the top perch by the sunny window, chin high, tail curled, bird feathers drifting past the glass; regal serene motion, golden light.",
+   "trans": "cut"
+  },
+  {
+   "id": "S32",
+   "kf": "K26_lookdown",
+   "seg": "seg32",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "From the top of the cat tower the white kitten looks down at the tiny puppy far below, her ears softening with sympathy; gentle emotional cinematic motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S33",
+   "kf": "K27_taptp",
+   "seg": "seg33",
+   "reuse": 0,
+   "kf_prompt": "",
+   "motion": "The white kitten taps the platform twice with one paw and looks down with warm inviting eyes, her tail swaying gently; soft tender cinematic motion, golden shimmer.",
+   "trans": "cut"
+  },
+  {
+   "id": "S34",
+   "kf": "K28_climbstart",
+   "seg": "seg35",
+   "reuse": 0,
+   "kf_prompt": "",
+   "motion": "The cream French Bulldog puppy pushes up onto the first platform with an extremely determined face, hind legs scrambling, tail straight up; comedic determined climbing.",
+   "trans": "fade"
+  },
+  {
+   "id": "S35",
+   "kf": "K30_maxcoach",
+   "seg": "seg36",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The golden retriever barks encouragement from below with big animated gestures while the puppy climbs above; loud comedic coaching motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S36",
+   "kf": "K29_wobble",
+   "seg": "seg37",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The carpeted platform wobbles under the climbing puppy, his paws gripping, fur ruffling, then it steadies; tense comedic climbing motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S37",
+   "kf": "K32_hammock",
+   "seg": "seg38",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The puppy and the white kitten wiggle and giggle together in the small round hammock as it swings gently, the dangling ball swaying; cozy comedic motion, warm light.",
+   "trans": "fade"
+  },
+  {
+   "id": "S38",
+   "kf": "K34_thronestrio",
+   "seg": "seg39",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The kitten on her tower, the puppy on the platform and the retriever in his box fort all relax together, tails wagging and swaying; warm happy family tableau motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S39",
+   "kf": "K34_thronestrio",
+   "seg": "seg40",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The kitten on her tower, the puppy on the platform and the retriever in his box fort all relax together, tails wagging and swaying; warm happy family tableau motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S40",
+   "kf": "K35_tails",
+   "seg": "seg41",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The white kitten's fluffy tail curls gently around the puppy's blue collar as he smiles, sparkles drifting; tender heartwarming close-up motion.",
+   "trans": "fade"
+  },
+  {
+   "id": "S41",
+   "kf": "K36_sunsetstars",
+   "seg": "seg42",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "Stars twinkle awake one by one over the porch at dusk, warm window glow, fireflies drifting past the cardboard fort; magical serene cinematic motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S42",
+   "kf": "K33_maxfort",
+   "seg": "seg43",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The giant golden retriever snores happily inside the big cardboard box fort, tail thumping lazily, ears twitching in sleep; cozy comedic motion.",
+   "trans": "cut"
+  },
+  {
+   "id": "S43",
+   "kf": "K36_sunsetstars",
+   "seg": "seg44",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "Stars twinkle awake one by one over the porch at dusk, warm window glow, fireflies drifting past the cardboard fort; magical serene cinematic motion.",
+   "trans": "fade"
+  },
+  {
+   "id": "S44",
+   "kf": "K37_endcard",
+   "seg": "seg34",
+   "reuse": 1,
+   "kf_prompt": "",
+   "motion": "The glowing PAWPOP sign shimmers warmly as sparkles and paw prints drift gently across the frame; inviting gentle outro motion, smooth and bright.",
+   "trans": "fade"
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0.0,
+   "mode": "warm",
+   "intensity": 0.55
+  },
+  {
+   "t": 97.15,
+   "mode": "comedy",
+   "intensity": 0.8
+  },
+  {
+   "t": 182.51,
+   "mode": "dramatic",
+   "intensity": 0.55
+  },
+  {
+   "t": 249.13,
+   "mode": "bright",
+   "intensity": 0.9
+  },
+  {
+   "t": 293.53,
+   "mode": "rain",
+   "intensity": 0.5
+  },
+  {
+   "t": 325.68,
+   "mode": "warm",
+   "intensity": 0.6
+  },
+  {
+   "t": 366.06,
+   "mode": "comedy",
+   "intensity": 0.75
+  },
+  {
+   "t": 403.75,
+   "mode": "bright",
+   "intensity": 0.85
+  },
+  {
+   "t": 439.96,
+   "mode": "lullaby",
+   "intensity": 0.45
+  },
+  {
+   "t": 468.05,
+   "mode": "outro",
+   "intensity": 0.55
+  }
+ ],
+ "sfx": [
+  {
+   "kind": "squeak",
+   "at": 61.92
+  },
+  {
+   "kind": "whoosh",
+   "at": 107.42
+  },
+  {
+   "kind": "woof",
+   "at": 108.52
+  },
+  {
+   "kind": "boop",
+   "at": 152.5
+  },
+  {
+   "kind": "knock",
+   "at": 183.41
+  },
+  {
+   "kind": "purr",
+   "at": 201.33
+  },
+  {
+   "kind": "boop",
+   "at": 223.39
+  },
+  {
+   "kind": "boop",
+   "at": 223.89
+  },
+  {
+   "kind": "ding",
+   "at": 224.79
+  },
+  {
+   "kind": "whoosh",
+   "at": 270.19
+  },
+  {
+   "kind": "chime",
+   "at": 280.12
+  },
+  {
+   "kind": "squeak",
+   "at": 294.63
+  },
+  {
+   "kind": "thud",
+   "at": 314.07
+  },
+  {
+   "kind": "boop",
+   "at": 359.92
+  },
+  {
+   "kind": "boop",
+   "at": 360.42
+  },
+  {
+   "kind": "woof",
+   "at": 383.17
+  },
+  {
+   "kind": "thud",
+   "at": 391.86
+  },
+  {
+   "kind": "chime",
+   "at": 416.14
+  },
+  {
+   "kind": "sparkle",
+   "at": 440.66
+  },
+  {
+   "kind": "chime",
+   "at": 477.24
+  },
+  {
+   "kind": "ding",
+   "at": 477.84
+  },
+  {
+   "kind": "sparkle",
+   "at": 479.04
+  }
+ ],
+ "timeline_override": [
+  {
+   "id": "S01",
+   "kf": "K01_hook",
+   "dur": 9.48,
+   "vo": [
+    "seg01"
+   ],
+   "trans": "cut",
+   "reuse": 0,
+   "flow": {
+    "src_in": 0.0,
+    "zoom": 1.0,
+    "kind": "trim",
+    "speed": 1.0
+   }
+  },
+  {
+   "id": "S02",
+   "kf": "K02_boxdawn",
+   "dur": 12.07,
+   "vo": [
+    "seg02"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S03",
+   "kf": "K02_boxdawn",
+   "dur": 12.67,
+   "vo": [
+    "seg03"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 3.2,
+    "zoom": 1.3,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S04",
+   "kf": "K03_theory",
+   "dur": 11.99,
+   "vo": [
+    "seg04"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S05",
+   "kf": "K04_sniff",
+   "dur": 14.41,
+   "vo": [
+    "seg05"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S06",
+   "kf": "K05_squeak",
+   "dur": 13.71,
+   "vo": [
+    "seg06"
+   ],
+   "trans": "cut",
+   "reuse": 0,
+   "flow": {
+    "src_in": 0.0,
+    "zoom": 1.0,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S07",
+   "kf": "K06_lunaarrive",
+   "dur": 10.79,
+   "vo": [
+    "seg07"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S08",
+   "kf": "K07_lunasits",
+   "dur": 12.03,
+   "vo": [
+    "seg08"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S09",
+   "kf": "K08_guard",
+   "dur": 9.87,
+   "vo": [
+    "seg09"
+   ],
+   "trans": "fade",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S10",
+   "kf": "K11_labelpoint",
+   "dur": 9.91,
+   "vo": [
+    "seg10"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S11",
+   "kf": "K11_labelpoint",
+   "dur": 15.63,
+   "vo": [
+    "seg11"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 4.6,
+    "zoom": 1.38,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 3
+   }
+  },
+  {
+   "id": "S12",
+   "kf": "K10_maxjudge",
+   "dur": 9.51,
+   "vo": [
+    "seg12"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S13",
+   "kf": "K12_planpose",
+   "dur": 9.63,
+   "vo": [
+    "seg13"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S14",
+   "kf": "K09_paweyes",
+   "dur": 8.43,
+   "vo": [
+    "seg14"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "slow",
+    "speed": 0.8885
+   }
+  },
+  {
+   "id": "S15",
+   "kf": "K10_maxjudge",
+   "dur": 11.15,
+   "vo": [
+    "seg15"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.6,
+    "zoom": 1.24,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S16",
+   "kf": "K13_sitclaim",
+   "dur": 11.23,
+   "vo": [
+    "seg16"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S17",
+   "kf": "K14_scritch",
+   "dur": 8.91,
+   "vo": [
+    "seg17"
+   ],
+   "trans": "fade",
+   "reuse": 0,
+   "flow": {
+    "src_in": 0.0,
+    "zoom": 1.0,
+    "kind": "trim",
+    "speed": 1.0
+   }
+  },
+  {
+   "id": "S18",
+   "kf": "K15_maxhide",
+   "dur": 8.31,
+   "vo": [
+    "seg18"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "slow",
+    "speed": 0.9013
+   }
+  },
+  {
+   "id": "S19",
+   "kf": "K16_earlisten",
+   "dur": 10.03,
+   "vo": [
+    "seg19"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S20",
+   "kf": "K17_theorymonster",
+   "dur": 13.03,
+   "vo": [
+    "seg20"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S21",
+   "kf": "K18_lunatap",
+   "dur": 13.63,
+   "vo": [
+    "seg21"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S22",
+   "kf": "K17_theorymonster",
+   "dur": 12.71,
+   "vo": [
+    "seg22"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 3.4,
+    "zoom": 1.32,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S23",
+   "kf": "K10_maxjudge",
+   "dur": 13.99,
+   "vo": [
+    "seg23"
+   ],
+   "trans": "fade",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S24",
+   "kf": "K14_scritch",
+   "dur": 6.67,
+   "vo": [
+    "seg24"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 4.2,
+    "zoom": 1.26,
+    "kind": "slow",
+    "speed": 0.9131
+   }
+  },
+  {
+   "id": "S25",
+   "kf": "K19_whisker",
+   "dur": 9.63,
+   "vo": [
+    "seg25"
+   ],
+   "trans": "cut",
+   "reuse": 0,
+   "flow": {
+    "src_in": 0.0,
+    "zoom": 1.0,
+    "kind": "trim",
+    "speed": 1.0
+   }
+  },
+  {
+   "id": "S26",
+   "kf": "K20_towerreveal",
+   "dur": 14.11,
+   "vo": [
+    "seg26"
+   ],
+   "trans": "cut",
+   "reuse": 0,
+   "flow": {
+    "src_in": 0.0,
+    "zoom": 1.0,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S27",
+   "kf": "K21_mousebell",
+   "dur": 8.83,
+   "vo": [
+    "seg27"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "slow",
+    "speed": 0.8482
+   }
+  },
+  {
+   "id": "S28",
+   "kf": "K22_lunacheek",
+   "dur": 9.91,
+   "vo": [
+    "seg28"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S29",
+   "kf": "K23_sadwalk",
+   "dur": 13.41,
+   "vo": [
+    "seg29"
+   ],
+   "trans": "fade",
+   "reuse": 0,
+   "flow": {
+    "src_in": 0.0,
+    "zoom": 1.0,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S30",
+   "kf": "K24_queenclimb",
+   "dur": 10.87,
+   "vo": [
+    "seg30"
+   ],
+   "trans": "fade",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S31",
+   "kf": "K25_topperch",
+   "dur": 9.99,
+   "vo": [
+    "seg31"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S32",
+   "kf": "K26_lookdown",
+   "dur": 12.73,
+   "vo": [
+    "seg32"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S33",
+   "kf": "K27_taptp",
+   "dur": 6.79,
+   "vo": [
+    "seg33"
+   ],
+   "trans": "cut",
+   "reuse": 0,
+   "flow": {
+    "src_in": 0.0,
+    "zoom": 1.0,
+    "kind": "trim",
+    "speed": 1.0
+   }
+  },
+  {
+   "id": "S34",
+   "kf": "K28_climbstart",
+   "dur": 16.11,
+   "vo": [
+    "seg35"
+   ],
+   "trans": "fade",
+   "reuse": 0,
+   "flow": {
+    "src_in": 0.0,
+    "zoom": 1.0,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S35",
+   "kf": "K30_maxcoach",
+   "dur": 8.19,
+   "vo": [
+    "seg36"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "slow",
+    "speed": 0.9145
+   }
+  },
+  {
+   "id": "S36",
+   "kf": "K29_wobble",
+   "dur": 13.39,
+   "vo": [
+    "seg37"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S37",
+   "kf": "K32_hammock",
+   "dur": 11.59,
+   "vo": [
+    "seg38"
+   ],
+   "trans": "fade",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S38",
+   "kf": "K34_thronestrio",
+   "dur": 16.35,
+   "vo": [
+    "seg39"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 3
+   }
+  },
+  {
+   "id": "S39",
+   "kf": "K34_thronestrio",
+   "dur": 8.27,
+   "vo": [
+    "seg40"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 4.0,
+    "zoom": 1.2,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S40",
+   "kf": "K35_tails",
+   "dur": 10.47,
+   "vo": [
+    "seg41"
+   ],
+   "trans": "fade",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S41",
+   "kf": "K36_sunsetstars",
+   "dur": 9.95,
+   "vo": [
+    "seg42"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  },
+  {
+   "id": "S42",
+   "kf": "K33_maxfort",
+   "dur": 7.67,
+   "vo": [
+    "seg43"
+   ],
+   "trans": "cut",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "slow",
+    "speed": 0.9765
+   }
+  },
+  {
+   "id": "S43",
+   "kf": "K36_sunsetstars",
+   "dur": 8.39,
+   "vo": [
+    "seg44"
+   ],
+   "trans": "fade",
+   "reuse": 1,
+   "flow": {
+    "src_in": 6.4,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 3
+   }
+  },
+  {
+   "id": "S44",
+   "kf": "K37_endcard",
+   "dur": 11.4,
+   "vo": [
+    "seg34"
+   ],
+   "trans": "fade",
+   "reuse": 1,
+   "flow": {
+    "src_in": 2.8,
+    "zoom": 1.18,
+    "kind": "pingpong",
+    "speed": 1.0,
+    "passes": 2
+   }
+  }
+ ],
+ "meta": {
+  "description": "A giant mystery box lands on Biscuit's porch - taller than the mailbox, bigger than any dream. Biscuit is CERTAIN it is his gift, and he will guard it, claim it, and out-cute anyone who disagrees... especially Luna, the tiny white kitten who sits on the box like she owns it. Then the box SCRITCHES from the inside, a purr rolls out, and one single whisker changes everything: the biggest surprise on Maple Street was never meant for Biscuit. What happens next turns one giant box into three thrones - and one grumpy morning into the warmest ending on the street. A funny dog and cat surprise story about sharing, kindness and the best kind of teamwork - told in cinematic animation with a warm British storyteller voice. Perfect for dog lovers, cat lovers and everyone who enjoys funny animal stories with a happy ending. MEET THE CHARACTERS - Biscuit: a cream French Bulldog puppy with a blue collar and a heart of gold. Luna: a tiny fluffy white kitten with big green eyes and royal standards. Max: the neighborhood golden retriever and chief moral-support officer.",
+  "tags": [
+   "dog and cat story",
+   "funny dog cartoon",
+   "animated dog story",
+   "animal surprise story",
+   "puppy and kitten story",
+   "mystery box story",
+   "cat tower cartoon",
+   "funny animal stories",
+   "heartwarming animal story",
+   "french bulldog cartoon",
+   "golden retriever cartoon",
+   "cute animal cartoon",
+   "animal friendship animation",
+   "dog stories",
+   "pet stories for families",
+   "animated pets",
+   "puppy story",
+   "cartoon animals",
+   "funny puppy video",
+   "pawpop stories"
+  ],
+  "chapter_labels": [
+   [
+    "seg01",
+    "The Biggest Box on Maple Street"
+   ],
+   [
+    "seg06",
+    "The Squeak Inside the Box"
+   ],
+   [
+    "seg10",
+    "The Name on the Label"
+   ],
+   [
+    "seg16",
+    "The Claim War"
+   ],
+   [
+    "seg19",
+    "The Purring Monster"
+   ],
+   [
+    "seg25",
+    "One Single Whisker"
+   ],
+   [
+    "seg26",
+    "The Tower Rises"
+   ],
+   [
+    "seg29",
+    "The Slowest Sad Walk"
+   ],
+   [
+    "seg33",
+    "Room for One More"
+   ],
+   [
+    "seg39",
+    "The Tower Has a Knight"
+   ],
+   [
+    "seg34",
+    "Every Paw Has a Story"
+   ]
+  ]
+ }
+}
