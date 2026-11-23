@@ -9,7 +9,7 @@ stories fail the run honestly (never silently patched).
 import json
 import re
 
-from . import zai
+from . import config, zai
 
 SCHEMA_HINT = """
 {
@@ -101,4 +101,9 @@ def generate(ep: str) -> dict:
     errs = validate(story)
     if errs:
         raise ValueError("story invalid: " + "; ".join(errs[:8]))
+    # persist: the story is the single source of truth for all later cycles
+    out = config.REPO_ROOT / "stories" / f"{ep.lower()}.json"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(json.dumps(story, indent=1, ensure_ascii=False))
+    print(f"[storygen] wrote {out} ({len(story.get('shots', []))} shots)", flush=True)
     return story
