@@ -44,9 +44,9 @@ def selftest() -> dict:
             pass
     if config.YT_REFRESH_TOKEN:
         try:
-            stats = yt.channel_stats()
-            rep["youtube"] = bool(stats.get("id"))
-            rep["channel"] = stats
+            probe = yt.token_probe()
+            rep["youtube"] = bool(probe.get("ok"))
+            rep["youtube_scope"] = probe.get("scope")
         except Exception as e:
             rep["youtube_error"] = str(e)[:160]
     print("SELFTEST:", json.dumps(rep, default=str)[:600], flush=True)

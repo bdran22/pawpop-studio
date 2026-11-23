@@ -105,6 +105,13 @@ def upload(video_path: str, meta: dict, publish_at_dubai: datetime.datetime) -> 
     return vid
 
 
+def token_probe() -> dict:
+    """Verify the OAuth credentials actually refresh (the only check the
+    upload-only scope allows; reading channels/videos needs readonly)."""
+    token = refresh_access_token()
+    return {"ok": bool(token), "scope": "youtube.upload (refresh ok)"}
+
+
 def channel_stats() -> dict:
     token = access_token()
     req = urllib.request.Request(
