@@ -1,60 +1,30 @@
 {
  "episodes": {
   "EP004": {
-   "status": "delegated",
-   "note": "sandbox finisher fleet owns EP004 production+publish (cron jobs 544218-544358, upload target 2026-11-24 09:00 Dubai). GitHub agent must NOT produce or publish EP004 - it starts at EP005. This avoids duplicate uploads while both sides share the same Z.ai quota."
+   "status": "published",
+   "video_id": "OFNI9lF2mFk",
+   "publish_at": "2026-11-25T17:00:00Z (21:00 Dubai)",
+   "master": "PAWPOP_EP004_Longform_1080x1920.mp4",
+   "duration_s": 485.1,
+   "qc": {
+    "rubric_mean": 8.97,
+    "verdict": "PASS",
+    "motion_gate": "37/37 clips + 5/5 master windows MOTION-OK"
+   },
+   "note": "sandbox finished production 2026-11-25: 37/37 shots animated (ENGINE-A + free ENGINE-E Wan2.2 via owner HF token), zero-static gate enforced; uploaded via chunked resumable uploader"
   },
   "EP005": {
-   "status": "producing",
-   "error": "chat failed: http=-1 body={\"raw\": \"<urlopen error [Errno 110] Connection timed out>\"}",
-   "missing_shots": [
-    "K01_hook",
-    "K02_sparkle",
-    "K03_arrival",
-    "K04_monsterstare",
-    "K05_firstspray",
-    "K06_retreat",
-    "K07_guardpost",
-    "K08_planning",
-    "K09_lunaarrive",
-    "K10_umbrella",
-    "K11_sneak",
-    "K12_sprayhit",
-    "K13_lunabat",
-    "K14_maxhero",
-    "K15_betrayal",
-    "K16_charge",
-    "K17_flowerpot",
-    "K18_butterfly",
-    "K19_lunachase",
-    "K20_mousefall",
-    "K21_freeze",
-    "K22_brace",
-    "K23_breakthrough",
-    "K24_catch",
-    "K25_tickle",
-    "K26_rainbow",
-    "K27_shake",
-    "K28_lunadry",
-    "K29_towel",
-    "K30_bath",
-    "K31_cleanagain",
-    "K32_porchnap",
-    "K33_puddlegame",
-    "K34_friend",
-    "K35_sunsettap",
-    "K36_catchgame",
-    "K37_evening",
-    "K38_endcard"
-   ],
-   "clips_ready": 0,
-   "clips_total": 38
+   "status": "next",
+   "note": "GitHub agent owns EP005+ (story already authored: stories/ep005.json)"
   }
  },
  "log": [
   "[2026-11-23 16:30] agent migrated to GitHub hosting by owner request",
   "[2026-11-23 16:50] EP004 delegated to sandbox finisher fleet; GitHub owns EP005+ (duplicate-upload protection)",
   "[2026-11-23 16:59] new episode EP005 started",
-  "[2026-11-23 17:17] EP005 story authoring failed: chat failed: http=-1 body={\"raw\": \"<urlopen error [Errno 110] Connection timed out>\"}"
+  "[2026-11-23 17:17] EP005 story authoring failed: chat failed: http=-1 body={\"raw\": \"<urlopen error [Errno 110] Connection timed out>\"}",
+  "[2026-11-23 16:30] agent migrated to GitHub hosting by owner request",
+  "[2026-11-23 16:50] EP004 delegated to sandbox finisher fleet; GitHub owns EP005+ (duplicate-upload protection)",
+  "[2026-11-25 18:10 Dubai] EP004 COMPLETE + PUBLISHED: video OFNI9lF2mFk scheduled 21:00 Dubai, QC 8.97 PASS, 37/37 clips real motion (qc reports in docs/qc/)"
  ]
 }
