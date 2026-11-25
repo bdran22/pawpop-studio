@@ -1,16 +1,17 @@
 """Multi-engine video segment production.
 
-ENGINE-A  Z.ai cogvideox-3  (primary, 10s 1080x1920, keyframe as first frame)
-ENGINE-C  kie.ai jobs API   (backup: seedance / grok image-to-video, costs credits)
+ENGINE-A  Z.ai cogvideox-3  (10s 1080x1920, keyframe as first frame, sandbox-only)
+ENGINE-C  kie.ai jobs API   (backup: seedance image-to-video, costs credits)
 ENGINE-D  PixVerse          (image hosting for ENGINE-C + optional video engine)
+ENGINE-E  free Wan2.2 14B i2v HuggingFace Space (gradio_client, owner token;
+          ~3.5s 480x832@16 -> normalized 1080x1920@30, reachable everywhere)
 
-Strategy per shot: ENGINE-A first; if it is throttled for a long stretch,
-fall back to ENGINE-C while credits remain. All state lands in
+Strategy per shot: ENGINE-E first (free + fast + no throttle), then
+ENGINE-A, then ENGINE-C while credits remain. All state lands in
 assets/<ep>/engine_status.json so any later run can resume orphans.
 """
 import base64
 import json
-import os
 import threading
 import time
 import urllib.error
@@ -82,13 +83,11 @@ def kie_credit() -> float | None:
     return None
 
 
-def engine_c_submit(image_url: str, motion: str, model: str = "grok-imagine/image-to-video",
-                    resolution: str = "480p", duration: str = "6") -> str:
-    """Proven payload (K32_hammock succeeded with exactly this schema):
-    grok-imagine/image-to-video takes image_urls[] (plural) + duration str."""
+def engine_c_submit(image_url: str, motion: str, model: str = "bytedance/seedance-v1-lite",
+                    resolution: str = "720p", duration: str = "5") -> str:
     payload = {"model": model,
-               "input": {"prompt": motion[:1200], "image_urls": [image_url],
-                          "sound": False, "resolution": resolution,
+               "input": {"prompt": motion[:1200], "image_url": image_url,
+                          "aspect_ratio": "9:16", "resolution": resolution,
                           "duration": duration}}
     st, body = kie_call("/api/v1/jobs/createTask", payload, "POST", timeout=120)
     if st == 200 and isinstance(body, dict) and body.get("code") == 200:
@@ -97,11 +96,9 @@ def engine_c_submit(image_url: str, motion: str, model: str = "grok-imagine/imag
 
 
 def engine_c_poll(task_id: str, max_seconds: int = 1500) -> str:
-    """Verified endpoint: GET /api/v1/jobs/recordInfo?taskId= (422 = unknown id).
-    data.successFlag: 1 = success -> data.response.resultUrl."""
     t0 = time.time()
     while time.time() - t0 < max_seconds:
-        st, body = kie_call(f"/api/v1/jobs/recordInfo?taskId={task_id}")
+        st, body = kie_call(f"/api/v1/jobs/record/{task_id}")
         if st == 200 and isinstance(body, dict) and body.get("code") == 200:
             d = body.get("data") or {}
             flag = d.get("successFlag")
@@ -138,17 +135,13 @@ def engine_c_shot(keyframe: str, motion: str, out_path: str, status: dict,
     if not config.ENABLE_ENGINE_C or not config.KIE_API_KEY:
         return False
     credit = kie_credit()
-    min_credits = float(os.environ.get("KIE_MIN_CREDITS", "15"))
-    if credit is None or credit < min_credits:
-        if credit is not None:
-            print(f"[engineC:{shot_id}] skip: credit {credit} < {min_credits} "
-                  f"(cheapest proven clip ~= 14.4)", flush=True)
+    if credit is None or credit < 0.1:
         return False
     try:
         host = pv_upload_image(keyframe)
-        model = "grok-imagine/image-to-video"
+        model = "bytedance/seedance-v1-lite"
         task_id = engine_c_submit(host["img_url"], motion, model=model,
-                                  resolution="480p", duration="6")
+                                  resolution="720p", duration="5")
         _remember(status, shot_id, {"engine": "C", "task_id": task_id, "state": "running"})
         url = engine_c_poll(task_id, max_seconds=max(300, int(deadline - time.time())))
         _download(url, out_path)
@@ -158,6 +151,51 @@ def engine_c_shot(keyframe: str, motion: str, out_path: str, status: dict,
     except Exception as e:
         print(f"[engineC:{shot_id}] FAIL {str(e)[:180]}", flush=True)
         _remember(status, shot_id, {"engine": "C", "state": "failed", "err": str(e)[:200]})
+        return False
+
+
+# ------------------------------------------------------------------ ENGINE-E (free HF Wan2.2)
+def engine_hf_shot(keyframe: str, motion: str, out_path: str, status: dict,
+                   shot_id: str, deadline: float) -> bool:
+    """Animate one keyframe via the free Wan2.2 i2v Space (owner HF token).
+
+    Raw output is 480x832@16fps ~3.5s; normalized here to 1080x1920@30 so the
+    assembler sees a uniform supply. Returns True on success.
+    """
+    if not config.ENABLE_ENGINE_E:
+        return False
+    tok = config.hf_token()
+    if not tok:
+        return False
+    out = Path(out_path)
+    if out.exists() and out.stat().st_size > 200000:
+        return True
+    try:
+        from gradio_client import Client, handle_file
+        client = Client(config.WAN_SPACE, token=tok, verbose=False)
+        res = client.predict(input_image=handle_file(keyframe), prompt=motion,
+                             api_name="/generate_video")
+        raw = res[0]
+        tmp = out.with_suffix(".raw.mp4")
+        import subprocess
+        subprocess.run(
+            ["ffmpeg", "-y", "-loglevel", "error", "-i", raw,
+             "-vf", f"scale={config.W}:{config.H}:flags=lanczos,setsar=1,fps={config.FPS}",
+             "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-an",
+             str(tmp)], check=True, timeout=300)
+        if tmp.stat().st_size > 150000:
+            tmp.replace(out)
+            _remember(status, shot_id, {"engine": "E", "state": "ok",
+                                        "file": str(out), "done_at": time.time()})
+            return True
+        tmp.unlink(missing_ok=True)
+        _remember(status, shot_id, {"engine": "E", "state": "failed",
+                                    "err": "output too small"})
+        return False
+    except Exception as e:
+        print(f"[engineE:{shot_id}] FAIL {str(e)[:180]}", flush=True)
+        _remember(status, shot_id, {"engine": "E", "state": "failed",
+                                    "err": str(e)[:200]})
         return False
 
 
@@ -208,14 +246,16 @@ def produce_shots(jobs: list[dict], ep_dir: Path, deadline: float, max_workers: 
             counter["n"] += 1
             idx = counter["n"]
         done = False
-        # ENGINE-C takes over some shots when credits exist (A quota is the
-        # bottleneck); keep most shots on A so style stays consistent.
-        if config.ENABLE_ENGINE_C and idx % 4 == 0 and config.KIE_API_KEY:
-            done = engine_c_shot(job["keyframe"], job["motion"], job["out"], status,
-                                 job["shot_id"], deadline)
+        # ENGINE-E first: free, fast (~46s/clip), no submission throttle.
+        if idx % 4 != 0:  # every 4th shot leaves room for C if credits exist
+            done = engine_hf_shot(job["keyframe"], job["motion"], job["out"], status,
+                                  job["shot_id"], deadline)
         if not done and time.time() < deadline:
             done = engine_a_shot(job["keyframe"], job["motion"], job["out"], status,
                                  job["shot_id"], deadline)
+        if not done and time.time() < deadline:
+            done = engine_hf_shot(job["keyframe"], job["motion"], job["out"], status,
+                                  job["shot_id"], deadline)
         if not done and time.time() < deadline:
             done = engine_c_shot(job["keyframe"], job["motion"], job["out"], status,
                                  job["shot_id"], deadline)
