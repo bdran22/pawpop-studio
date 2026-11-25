@@ -1,0 +1,712 @@
+{
+ "ep": "EP004",
+ "checked": 37,
+ "motion_ok": 37,
+ "static_blocked": 0,
+ "gate": "PASS",
+ "details": [
+  {
+   "clip": "K01_hook.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    12.395,
+    9.175,
+    8.935,
+    5.638,
+    11.724,
+    18.096,
+    15.192
+   ],
+   "mean_diff": 11.594,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.0
+  },
+  {
+   "clip": "K02_boxdawn.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    18.37,
+    22.497,
+    21.862,
+    11.105,
+    28.414,
+    22.404,
+    15.243
+   ],
+   "mean_diff": 19.985,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.5
+  },
+  {
+   "clip": "K03_theory.mp4",
+   "exists": true,
+   "duration": 5.04,
+   "frames": 8,
+   "pairs": [
+    37.115,
+    27.822,
+    22.25,
+    13.564,
+    11.654,
+    8.297,
+    8.071
+   ],
+   "mean_diff": 18.396,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.3
+  },
+  {
+   "clip": "K04_sniff.mp4",
+   "exists": true,
+   "duration": 5.04,
+   "frames": 8,
+   "pairs": [
+    42.536,
+    33.99,
+    14.306,
+    25.579,
+    28.936,
+    8.825,
+    8.684
+   ],
+   "mean_diff": 23.265,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.3
+  },
+  {
+   "clip": "K05_squeak.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    23.686,
+    14.742,
+    17.93,
+    23.478,
+    18.585,
+    11.855,
+    19.453
+   ],
+   "mean_diff": 18.533,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.5
+  },
+  {
+   "clip": "K06_lunaarrive.mp4",
+   "exists": true,
+   "duration": 5.04,
+   "frames": 8,
+   "pairs": [
+    44.298,
+    37.402,
+    37.779,
+    16.201,
+    14.458,
+    15.946,
+    10.17
+   ],
+   "mean_diff": 25.179,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.3
+  },
+  {
+   "clip": "K07_lunasits.mp4",
+   "exists": true,
+   "duration": 5.04,
+   "frames": 8,
+   "pairs": [
+    26.208,
+    23.117,
+    13.768,
+    8.354,
+    10.902,
+    6.34,
+    3.232
+   ],
+   "mean_diff": 13.132,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.3
+  },
+  {
+   "clip": "K08_guard.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    8.521,
+    12.797,
+    12.871,
+    9.774,
+    7.959,
+    8.531,
+    6.438
+   ],
+   "mean_diff": 9.556,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.0
+  },
+  {
+   "clip": "K09_paweyes.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    18.946,
+    15.109,
+    8.225,
+    12.951,
+    7.127,
+    12.266,
+    10.719
+   ],
+   "mean_diff": 12.192,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 1.9
+  },
+  {
+   "clip": "K10_maxjudge.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    5.983,
+    20.818,
+    17.271,
+    17.45,
+    15.909,
+    18.131,
+    11.266
+   ],
+   "mean_diff": 15.261,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.1
+  },
+  {
+   "clip": "K11_labelpoint.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    12.171,
+    11.896,
+    5.404,
+    7.07,
+    11.104,
+    11.248,
+    8.723
+   ],
+   "mean_diff": 9.659,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.2
+  },
+  {
+   "clip": "K12_planpose.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    7.1,
+    12.546,
+    20.813,
+    15.336,
+    11.862,
+    13.351,
+    13.381
+   ],
+   "mean_diff": 13.484,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.6
+  },
+  {
+   "clip": "K13_sitclaim.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    7.875,
+    14.254,
+    11.622,
+    12.739,
+    12.481,
+    11.794,
+    8.292
+   ],
+   "mean_diff": 11.294,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.4
+  },
+  {
+   "clip": "K14_scritch.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    6.471,
+    22.768,
+    23.406,
+    9.064,
+    5.173,
+    4.26,
+    2.9
+   ],
+   "mean_diff": 10.577,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.1
+  },
+  {
+   "clip": "K15_maxhide.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    3.825,
+    5.044,
+    5.151,
+    9.023,
+    5.613,
+    8.206,
+    9.127
+   ],
+   "mean_diff": 6.57,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 1.9
+  },
+  {
+   "clip": "K16_earlisten.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    15.269,
+    17.8,
+    14.41,
+    6.776,
+    21.783,
+    5.879,
+    16.372
+   ],
+   "mean_diff": 14.041,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.4
+  },
+  {
+   "clip": "K17_theorymonster.mp4",
+   "exists": true,
+   "duration": 3.57,
+   "frames": 8,
+   "pairs": [
+    9.629,
+    27.593,
+    21.546,
+    16.656,
+    14.307,
+    12.68,
+    13.867
+   ],
+   "mean_diff": 16.611,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.6
+  },
+  {
+   "clip": "K18_lunatap.mp4",
+   "exists": true,
+   "duration": 3.57,
+   "frames": 8,
+   "pairs": [
+    11.515,
+    12.587,
+    14.423,
+    12.872,
+    18.675,
+    14.096,
+    18.58
+   ],
+   "mean_diff": 14.678,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.6
+  },
+  {
+   "clip": "K19_whisker.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    1.117,
+    0.96,
+    2.099,
+    1.352,
+    1.22,
+    1.839,
+    1.265
+   ],
+   "mean_diff": 1.407,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 1.9
+  },
+  {
+   "clip": "K20_towerreveal.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    5.527,
+    3.709,
+    3.304,
+    5.127,
+    4.739,
+    3.623,
+    5.538
+   ],
+   "mean_diff": 4.51,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.0
+  },
+  {
+   "clip": "K21_mousebell.mp4",
+   "exists": true,
+   "duration": 3.56,
+   "frames": 8,
+   "pairs": [
+    7.589,
+    7.114,
+    6.067,
+    9.397,
+    6.75,
+    5.101,
+    10.538
+   ],
+   "mean_diff": 7.508,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.2
+  },
+  {
+   "clip": "K22_lunacheek.mp4",
+   "exists": true,
+   "duration": 3.57,
+   "frames": 8,
+   "pairs": [
+    6.562,
+    18.988,
+    16.543,
+    14.996,
+    18.031,
+    12.378,
+    15.863
+   ],
+   "mean_diff": 14.766,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.6
+  },
+  {
+   "clip": "K23_sadwalk.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    11.439,
+    22.719,
+    24.956,
+    11.48,
+    5.188,
+    5.834,
+    16.184
+   ],
+   "mean_diff": 13.971,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 1.7
+  },
+  {
+   "clip": "K24_queenclimb.mp4",
+   "exists": true,
+   "duration": 3.57,
+   "frames": 8,
+   "pairs": [
+    5.14,
+    7.35,
+    12.087,
+    18.116,
+    31.942,
+    28.268,
+    15.904
+   ],
+   "mean_diff": 16.972,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.6
+  },
+  {
+   "clip": "K25_topperch.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    2.038,
+    3.232,
+    2.395,
+    3.275,
+    7.572,
+    6.217,
+    6.097
+   ],
+   "mean_diff": 4.404,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 1.5
+  },
+  {
+   "clip": "K26_lookdown.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    1.285,
+    3.122,
+    2.39,
+    1.862,
+    1.933,
+    1.962,
+    1.52
+   ],
+   "mean_diff": 2.011,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 1.7
+  },
+  {
+   "clip": "K27_taptp.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    14.038,
+    13.238,
+    12.651,
+    6.793,
+    11.361,
+    11.621,
+    11.696
+   ],
+   "mean_diff": 11.628,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 1.9
+  },
+  {
+   "clip": "K28_climbstart.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    6.636,
+    12.241,
+    8.159,
+    18.366,
+    15.03,
+    20.72,
+    12.249
+   ],
+   "mean_diff": 13.343,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.2
+  },
+  {
+   "clip": "K29_wobble.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    16.367,
+    15.636,
+    17.943,
+    13.553,
+    16.471,
+    13.939,
+    8.547
+   ],
+   "mean_diff": 14.637,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.3
+  },
+  {
+   "clip": "K30_maxcoach.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    15.918,
+    16.095,
+    17.961,
+    11.098,
+    9.19,
+    11.685,
+    12.725
+   ],
+   "mean_diff": 13.525,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.4
+  },
+  {
+   "clip": "K31_madeit.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    10.4,
+    12.188,
+    13.177,
+    11.5,
+    12.643,
+    13.001,
+    11.854
+   ],
+   "mean_diff": 12.109,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 2.3
+  },
+  {
+   "clip": "K32_hammock.mp4",
+   "exists": true,
+   "duration": 6.03,
+   "frames": 8,
+   "pairs": [
+    16.178,
+    14.955,
+    11.8,
+    19.03,
+    11.79,
+    16.114,
+    12.2
+   ],
+   "mean_diff": 14.581,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.9
+  },
+  {
+   "clip": "K33_maxfort.mp4",
+   "exists": true,
+   "duration": 10.29,
+   "frames": 8,
+   "pairs": [
+    4.274,
+    9.953,
+    3.064,
+    3.48,
+    9.493,
+    5.352,
+    2.435
+   ],
+   "mean_diff": 5.436,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 1.8
+  },
+  {
+   "clip": "K34_thronestrio.mp4",
+   "exists": true,
+   "duration": 3.57,
+   "frames": 8,
+   "pairs": [
+    3.483,
+    3.606,
+    2.303,
+    2.682,
+    3.997,
+    3.816,
+    4.78
+   ],
+   "mean_diff": 3.524,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.5
+  },
+  {
+   "clip": "K35_tails.mp4",
+   "exists": true,
+   "duration": 3.57,
+   "frames": 8,
+   "pairs": [
+    6.223,
+    5.465,
+    7.459,
+    6.126,
+    5.622,
+    5.525,
+    6.402
+   ],
+   "mean_diff": 6.117,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.6
+  },
+  {
+   "clip": "K36_sunsetstars.mp4",
+   "exists": true,
+   "duration": 3.57,
+   "frames": 8,
+   "pairs": [
+    5.41,
+    4.315,
+    7.574,
+    7.037,
+    8.977,
+    10.986,
+    12.035
+   ],
+   "mean_diff": 8.048,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.6
+  },
+  {
+   "clip": "K37_endcard.mp4",
+   "exists": true,
+   "duration": 3.57,
+   "frames": 8,
+   "pairs": [
+    13.2,
+    11.298,
+    22.149,
+    25.059,
+    26.135,
+    22.516,
+    22.334
+   ],
+   "mean_diff": 20.384,
+   "static": false,
+   "verdict": "MOTION-OK",
+   "secs": 0.6
+  }
+ ]
+}
