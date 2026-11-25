@@ -61,6 +61,24 @@ def make_piece(idx, slot, tl, pieces_dir: Path, clip_path):
     zoom = float(flow.get("zoom", 1.0))
     speed = float(flow.get("speed", 1.0))
     passes = int(flow.get("passes", 2))
+    # Supply-adaptive flow: a piece must NEVER be shorter than its slot or the
+    # concat timeline desyncs. If the source cannot cover the slot as
+    # trim/slow, fall back to a ping-pong with enough passes (reverse playback
+    # is still real animation - no freeze frames).
+    cd = probe_dur(clip_path) or 10.29
+    src_in = min(src_in, max(0.0, cd - 1.0))
+    avail = max(0.8, cd - src_in)
+    if kind in ("trim", "slow") and avail < dur - 0.05:
+        kind = "pingpong"
+    if kind == "pingpong":
+        eff = avail * min(speed, 1.0) * 0.95
+        need = max(2, math.ceil(dur / max(eff, 0.5)))
+        if need > passes:
+            passes = need
+        total_supply = passes * avail * min(speed, 1.0)
+        if total_supply < dur - 0.05:
+            passes = max(2, math.ceil(dur / (avail * 0.92)))
+            speed = min(1.0, round(dur / (passes * avail), 4))
     zcrop = ""
     if zoom > 1.001:
         cw, chh = int(W / zoom) // 2 * 2, int(H / zoom) // 2 * 2
@@ -74,14 +92,18 @@ def make_piece(idx, slot, tl, pieces_dir: Path, clip_path):
         cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", str(clip_path),
                "-ss", f"{src_in:.3f}", "-t", f"{dur:.3f}", "-vf", slow + base] + ENC + [str(out)]
     else:
-        if passes >= 3:
-            fc = (f"[0:v]{slow}{base},split=3[a][b][c];[b]reverse[rb];"
-                  f"[a][rb][c]concat=n=3:v=1[out]")
-        else:
+        # Generic ping-pong: build one forward+reverse block, then loop it as
+        # many times as needed (works for any pass count, long narration safe).
+        n_loops = max(1, math.ceil(passes / 2))
+        pp = pieces_dir / f"pp_{idx:02d}_{slot['id']}.mp4"
+        if not (pp.exists() and pp.stat().st_size > 10000):
             fc = (f"[0:v]{slow}{base},split[a][b];[b]reverse[r];"
                   f"[a][r]concat=n=2:v=1[out]")
-        cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", str(clip_path),
-               "-ss", f"{src_in:.3f}", "-filter_complex", fc, "-map", "[out]",
+            run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(clip_path),
+                 "-ss", f"{src_in:.3f}", "-filter_complex", fc,
+                 "-map", "[out]"] + ENC + [str(pp)])
+        cmd = ["ffmpeg", "-y", "-loglevel", "error", "-fflags", "+genpts",
+               "-stream_loop", str(n_loops - 1), "-i", str(pp),
                "-t", f"{dur:.3f}"] + ENC + [str(out)]
     run(cmd)
     return out
