@@ -36,11 +36,11 @@ def probe_clip(path: str, n: int = N_FRAMES) -> dict:
             if dur <= 0:
                 return {"clip": path, "exists": True, "static": True, "mean_diff": 0.0,
                         "pairs": [], "error": "unreadable duration"}
-            # extract frames
+            # extract frames (downscale FIRST: tiny frames make fps sampling ~free)
             fps_expr = f"{max(n - 1, 1)}/{max(dur * 0.98, 0.1)}"
             subprocess.run(
                 ["ffmpeg", "-v", "error", "-i", path, "-vf",
-                 f"fps={fps_expr},scale=48:85,format=gray", "-vsync", "0",
+                 f"scale=48:85,format=gray,fps={fps_expr}", "-vsync", "0",
                  os.path.join(td, "f%03d.png")],
                 capture_output=True, timeout=180)
             frames = sorted(f for f in os.listdir(td) if f.endswith(".png"))
@@ -67,7 +67,10 @@ def probe_clip(path: str, n: int = N_FRAMES) -> dict:
 
 def gate_episode(ep_dir: str, clips: list) -> dict:
     """Run the motion gate over every clip; episode passes only if ALL move."""
-    results = [probe_clip(os.path.join(ep_dir, "clips", c + ".mp4")) for c in clips]
+    from concurrent.futures import ThreadPoolExecutor
+    paths = [os.path.join(ep_dir, "clips", c + ".mp4") for c in clips]
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        results = list(ex.map(probe_clip, paths))
     statics = [r for r in results if r["static"]]
     return {"ep": os.path.basename(ep_dir), "checked": len(results),
             "motion_ok": len(results) - len(statics), "static_blocked": len(statics),
