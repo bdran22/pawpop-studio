@@ -72,6 +72,24 @@ YT_CHANNEL_ID = os.environ.get("YT_CHANNEL_ID", "")
 ENABLE_ENGINE_C = os.environ.get("PAWPOP_ENABLE_ENGINE_C", "1") == "1"
 ENABLE_ENGINE_D = os.environ.get("PAWPOP_ENABLE_ENGINE_D", "0") == "1"
 
+# ------------------------------------------------------------------ ENGINE-E (free Wan2.2 i2v, HF Space)
+# Owner-supplied HuggingFace token (0600 file, never printed). Authenticated
+# quota >> anonymous; reachable from sandbox AND GitHub runners.
+HF_TOKEN_PATH = Path(os.environ.get(
+    "PAWPOP_HF_TOKEN_PATH", "/home/z/my-project/PAWPOP_STUDIO/secrets/hf_token.txt"))
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
+WAN_SPACE = os.environ.get("WAN_SPACE", "Upsampler/wan-2-2-14b-image-to-video")
+ENABLE_ENGINE_E = os.environ.get("PAWPOP_ENABLE_ENGINE_E", "1") == "1"
+
+
+def hf_token() -> str:
+    if HF_TOKEN:
+        return HF_TOKEN
+    try:
+        return HF_TOKEN_PATH.read_text().strip()
+    except Exception:
+        return ""
+
 
 def ensure_dirs():
     for p in (WORK_DIR, ASSETS):
