@@ -17,7 +17,8 @@ from . import config, zai
 
 def _kf_zai(prompt: str, out: Path) -> bool:
     try:
-        zai.image(prompt, str(out))
+        # retries=1: quick attempt, pollinations absorbs the rest (no key, free)
+        zai.image(prompt, str(out), retries=1)
         return out.exists() and out.stat().st_size > 20000
     except Exception as e:
         print(f"[kf.zai] {out.stem}: {str(e)[:160]}", flush=True)
