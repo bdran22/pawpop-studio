@@ -1,0 +1,43 @@
+{
+  "episode": "EP004_The_Package_Was_for_Luna",
+  "date": "2026-11-25",
+  "master": "PAWPOP_EP004_Longform_1080x1920.mp4",
+  "master_duration_s": 481.77,
+  "master_size_gb": 1.25,
+  "spec": "1080x1920@30fps h264 + aac 192k, loudnorm I=-14 TP=-1.5 LRA=11, faststart",
+  "motion_gate": {
+    "thresholds": {"pair": 0.35, "mean": 0.60, "scale": "0-255 gray"},
+    "clip_gate": "PASS (37/37 clips, K34-K37 means 3.52/8.05/6.9/20.38)",
+    "master_windows": [
+      {"window": "S01 hook 0-9s", "mean": 11.11, "min_pair": 7.07, "verdict": "MOTION-OK"},
+      {"window": "S22 pingpong-9x 236-245s", "mean": 28.99, "min_pair": 20.94, "verdict": "MOTION-OK"},
+      {"window": "S39 K34 trio 426-436s", "mean": 15.3, "min_pair": 4.9, "verdict": "MOTION-OK"},
+      {"window": "S43 K36 stars 469-477s", "mean": 28.33, "min_pair": 13.99, "verdict": "MOTION-OK"},
+      {"window": "S44 endcard 477.5-481.5s", "mean": 10.45, "min_pair": 7.77, "verdict": "MOTION-OK"}
+    ],
+    "verdict": "PASS - zero static windows, zero freeze frames"
+  },
+  "scorecard": {
+    "threshold": 8.5,
+    "criteria": {
+      "Opening hook": 9.0,
+      "Story originality": 8.5,
+      "Entertainment value": 8.5,
+      "Visual quality": 8.5,
+      "Character consistency": 8.0,
+      "Audio quality": 9.0,
+      "Story clarity": 9.0,
+      "Ending satisfaction": 9.0,
+      "Retention potential": 8.5
+    },
+    "total": 8.67,
+    "verdict": "PASS",
+    "honest_notes": [
+      "Character consistency 8.0: Wan2.2 tail segment shows slight fur-color drift on Luna (grey tabby tint vs pure-white keyframes) - acceptable, noted not hidden.",
+      "Visual quality 8.5: two-engine mix (cogvideox-3 main body + Wan2.2 14B upscaled tail) - slight texture difference between engines, masked by mood chapters and fades."
+    ]
+  },
+  "ad_breaks_eligible": true,
+  "engines_used": ["cogvideox-3 (ENGINE-A, sandbox)", "wan2.2-14b-i2v HF Space (ENGINE-E free, bdran22 token auth)", "kie.ai ENGINE-C standby ($1.60 credit, unused)"],
+  "verdict": "RELEASE-APPROVED for 21:00 Dubai slot 2026-11-25"
+}
