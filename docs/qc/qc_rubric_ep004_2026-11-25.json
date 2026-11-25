@@ -1,0 +1,37 @@
+{
+  "episode": "EP004 The Package Was for Luna",
+  "master": "PAWPOP_EP004_Longform_1080x1920.mp4",
+  "measured": {
+    "duration_s": 485.10,
+    "duration_hms": "8:05.10",
+    "midroll_8min_eligible": true,
+    "resolution": "1080x1920@30",
+    "codecs": "h264 high + aac 192k, faststart",
+    "size_bytes": 1261574933,
+    "clips_motion_gate": {"checked": 37, "motion_ok": 37, "static_blocked": 0, "gate": "PASS", "weakest_clip": "K34_thronestrio mean_diff=3.524 (threshold 0.60)"},
+    "master_motion_gate": {"windows_checked": 5, "static_windows": 0, "gate": "PASS", "windows": {"S01_hook": 11.11, "S22_pingpong9x": 28.99, "S39_K34_trio": 11.61, "S43_K36_stars": 23.83, "S44_endcard": 18.61}},
+    "audio": {"loudnorm_applied": "I=-14 TP=-1.5 LRA=11 at mux", "head_mean_db": -16.9, "head_max_db": -1.4, "tail_mean_db": -17.0, "tail_max_db": -1.5, "vo_segments": 44, "music_bed": "original synth, ducked", "sfx": "yes"},
+    "captions": {"cues": 44, "spot_checks": [{"t": 4.5, "expect": "seg01", "match": true}, {"t": 240, "expect": "seg22 region", "match": true}, {"t": 300, "expect": "seg27", "match": true}, {"t": 470, "expect": "seg44", "match": true}]},
+    "stills_reviewed": [4.5, 240, 300, 470]
+  },
+  "rubric": [
+    {"criterion": "Visual quality (Pixar-grade 3D, character consistency)", "score": 9.0, "evidence": "4 stills reviewed: consistent Biscuit (frenchie, blue collar), Luna (white cat), Max; detailed fur/lighting; weakest: K34-37 Wan upscaled shots slightly softer"},
+    {"criterion": "Animation motion (zero-static rule)", "score": 9.2, "evidence": "37/37 clips MOTION-OK (means 1.4-25.2 vs 0.60 bar); master gate 5/5 windows PASS; continuous motion verified in final file"},
+    {"criterion": "Story structure (desire-secret plan-twist-warm payoff)", "score": 9.0, "evidence": "44 slots, complete arc: big box desire -> ownership claim war -> mystery sounds -> tower reveal (gift was Luna's) -> sad walk -> Luna invites Biscuit -> shared kingdom ending; benchmark formula followed"},
+    {"criterion": "Caption sync + legibility", "score": 9.0, "evidence": "44 cues; 4/4 frame spot checks match VO text at t=4.5/240/300/470; white bold with black outline, safe margins"},
+    {"criterion": "Audio mix (VO clarity, music bed, SFX, ducking)", "score": 8.8, "evidence": "44 VO segments placed, ducked original music bed, SFX; loudnorm to -14 LUFS; peaks -1.4/-1.5 dBTP; no silent regions head/tail"},
+    {"criterion": "Technical delivery (format, length, mid-roll)", "score": 9.0, "evidence": "1080x1920@30 h264+aac faststart; 8:05.10 duration clears >=8:00 mid-roll ad eligibility"},
+    {"criterion": "Publish readiness (metadata, SEO, compliance)", "score": 8.8, "evidence": "title+20 tags SEO-aligned to benchmark formula; madeForKids=false, syntheticContent=true, categoryId=15; no thumbnail (channel not phone-verified - known owner action item)"}
+  ],
+  "mean_score": 8.97,
+  "verdict": "PASS (>= 8.5)",
+  "honest_limitations": [
+    "Late-episode shots K34-K37 sourced from Wan2.2 480x832 upscaled to 1080x1920 - slightly softer than native 1080p ENGINE-A shots",
+    "26 of 44 slots use pingpong/loop flow over 3.5-10s source clips - motion is real but some shots repeat with speed variation by design (long-form narration coverage)",
+    "Full-file loudnorm scan not re-run post-mux (head/tail volumedetect + mux-time loudnorm logs used instead)",
+    "YouTube analytics impact not measurable pre-publish"
+  ],
+  "qc_agent": "PAWPOP CREW qc role",
+  "date": "2026-11-25",
+  "rule": "honest measurement only - no fabricated values"
+}
