@@ -169,6 +169,8 @@ def publish_episode(story: dict, st: dict) -> dict:
     s = state.ep(st, ep_id)
     if s.get("status") != "ready" or not s.get("master"):
         return s
+    if s.get("video_id") or s.get("upload_claimed_at"):
+        return s  # slot guard already owns (or finished) this upload
     slot = yt.next_slot_utc()
     meta_path = d / "upload_metadata.json"
     m = json.loads(meta_path.read_text())
