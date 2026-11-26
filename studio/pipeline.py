@@ -44,9 +44,9 @@ def selftest() -> dict:
             pass
     if config.YT_REFRESH_TOKEN:
         try:
-            probe = yt.token_probe()
-            rep["youtube"] = bool(probe.get("ok"))
-            rep["youtube_scope"] = probe.get("scope")
+            stats = yt.channel_stats()
+            rep["youtube"] = bool(stats.get("id"))
+            rep["channel"] = stats
         except Exception as e:
             rep["youtube_error"] = str(e)[:160]
     print("SELFTEST:", json.dumps(rep, default=str)[:600], flush=True)
@@ -203,12 +203,57 @@ def next_ep_id(st: dict) -> str:
     return f"EP{n:03d}"
 
 
+def restore_assets_from_github(ep_id: str) -> bool:
+    """Durability: if work assets for this episode were wiped by sandbox
+    recycling, restore them from the ep005_latest.tar.gz release asset."""
+    import subprocess, urllib.request
+    ep_dir = config.ASSETS / ep_id.lower()
+    marker = ep_dir / ".restored"
+    if ep_dir.exists() and (ep_dir / "story.json").exists() and not marker.exists():
+        return False  # assets intact this snapshot
+    if marker.exists():
+        return True
+    token_path = Path("/home/z/my-project/PAWPOP_STUDIO/secrets/github_pat.txt")
+    if not token_path.exists():
+        return False
+    token = token_path.read_text().strip()
+    try:
+        req = urllib.request.Request(
+            f"https://api.github.com/repos/{config.REPO}/releases/tags/sandbox-archive",
+            headers={"Authorization": f"Bearer {token}", "User-Agent": "pawpop"})
+        rel = json.load(urllib.request.urlopen(req, timeout=30))
+        url = next((a["url"] for a in rel.get("assets", [])
+                    if a["name"] == f"{ep_id.lower()}_latest.tar.gz"), None)
+        if not url:
+            return False
+        req2 = urllib.request.Request(url, headers={
+            "Authorization": f"Bearer {token}", "User-Agent": "pawpop",
+            "Accept": "application/octet-stream"})
+        tar_path = config.WORK_DIR / f"{ep_id.lower()}_restore.tar.gz"
+        with urllib.request.urlopen(req2, timeout=560) as r, open(tar_path, "wb") as f:
+            while True:
+                c = r.read(1 << 22)
+                if not c:
+                    break
+                f.write(c)
+        ep_dir.mkdir(parents=True, exist_ok=True)
+        subprocess.run(["tar", "-xzf", str(tar_path), "-C", str(ep_dir)], check=True,
+                       capture_output=True)
+        tar_path.unlink(missing_ok=True)
+        marker.write_text("restored")
+        print(f"[restore] {ep_id} assets restored from GitHub archive", flush=True)
+        return True
+    except Exception as e:
+        print(f"[restore] failed: {str(e)[:140]}", flush=True)
+        return False
+
+
 def run(produce_budget_min: int | None = None):
     config.ensure_dirs()
     st = state.load()
     selftest()
 
-    produce_min = produce_budget_min if produce_budget_min is not None else config.PRODUCE_BUDGET_MIN
+    produce_min = produce_budget_min or config.PRODUCE_BUDGET_MIN
     prod_deadline = time.time() + produce_min * 60
 
     # -- finish the most advanced episode -------------------------------
@@ -217,15 +262,8 @@ def run(produce_budget_min: int | None = None):
         target = next_ep_id(st)
         st["episodes"][target] = {"status": "new"}
         state.log(st, f"new episode {target} started")
-    try:
-        story = load_story(target)
-    except Exception as e:
-        st["episodes"][target]["status"] = "story_failed"
-        st["episodes"][target]["error"] = str(e)[:300]
-        state.log(st, f"{target} story authoring failed: {str(e)[:160]}")
-        state.save(st)
-        print(f"RUN RESULT: {target} story_failed (will retry next cycle)", flush=True)
-        return st
+    restore_assets_from_github(target)
+    story = load_story(target)
     s = produce_episode(story, st, prod_deadline)
     if not s.get("missing_shots") and s.get("status") in ("producing", "qc_failed", "ready"):
         s = finish_episode(story, st)
@@ -236,12 +274,9 @@ def run(produce_budget_min: int | None = None):
     if time.time() < prod_deadline - 20 * 60 and s.get("status") in ("scheduled", "ready"):
         nxt = next_ep_id(st)
         if f"EP{nxt[2:]}" not in st["episodes"]:
-            try:
-                story2 = load_story(nxt)
-                st["episodes"][nxt] = {"status": "new"}
-                produce_episode(story2, st, prod_deadline)
-            except Exception as e:
-                state.log(st, f"{nxt} story authoring failed: {str(e)[:160]}")
+            story2 = load_story(nxt)
+            st["episodes"][nxt] = {"status": "new"}
+            produce_episode(story2, st, prod_deadline)
 
     state.save(st)
     return st
@@ -261,18 +296,7 @@ def main():
     if a.status:
         status()
     elif a.run:
-        try:
-            run(a.produce_budget_min)
-        except Exception as e:
-            # never leave the cycle without an honest record + saved state
-            try:
-                st = state.load()
-                state.log(st, f"cycle crashed: {type(e).__name__}: {str(e)[:250]}")
-                state.save(st)
-            except Exception:
-                pass
-            print(f"CYCLE CRASHED: {type(e).__name__}: {str(e)[:300]}", flush=True)
-            raise SystemExit(1)
+        run(a.produce_budget_min)
 
 
 if __name__ == "__main__":
