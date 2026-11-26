@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO = os.environ.get("PAWPOP_REPO", "bdran22/pawpop-studio")
 WORK_DIR = Path(os.environ.get("PAWPOP_WORK", REPO_ROOT / "work"))
 ASSETS = WORK_DIR / "assets"
 STATE_PATH = REPO_ROOT / "state" / "state.json"
