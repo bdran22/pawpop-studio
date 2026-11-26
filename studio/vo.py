@@ -30,9 +30,23 @@ def tts_zai(text: str, out: Path) -> bool:
         return False
 
 
+def _ensure_edge_tts() -> None:
+    """Sandbox snapshots lose pip installs - auto-reinstall edge-tts if missing."""
+    import shutil
+    if shutil.which("edge-tts"):
+        return
+    try:
+        subprocess.run(["pip", "install", "-q", "edge-tts"], check=True,
+                       capture_output=True, timeout=180)
+        print("[vo.edge] edge-tts auto-installed", flush=True)
+    except Exception as e:
+        print(f"[vo.edge] auto-install failed: {str(e)[:120]}", flush=True)
+
+
 def tts_edge(text: str, out: Path) -> bool:
     mp3 = out.with_suffix(".edge.mp3")
     try:
+        _ensure_edge_tts()
         # '=' syntax: argparse treats a bare "-4%" as an unknown flag
         subprocess.run(["edge-tts", "--voice", "en-GB-RyanNeural", "--rate=-4%",
                         "--text", _clean(text), "--write-media", str(mp3)],
