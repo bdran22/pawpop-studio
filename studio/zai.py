@@ -168,8 +168,13 @@ def image(prompt: str, out_path, size: str = "1080x1920", retries: int = 4) -> s
 
 
 # ------------------------------------------------------------------ ENGINE-A video
-def video_submit(conf, keyframe_path: str, motion: str) -> str:
-    """Submit image-to-video task, return task id. 429-aware."""
+def video_submit(conf, keyframe_path: str, motion: str,
+                 backoff_budget: float | None = None) -> str:
+    """Submit image-to-video task, return task id. 429-aware.
+
+    backoff_budget: optional max total seconds willing to sleep through 429
+    backoffs before giving up (lets the router try the next engine instead
+    of blocking a whole producer round)."""
     with open(keyframe_path, "rb") as f:
         b64 = base64.b64encode(f.read()).decode()
     dataurl = "data:image/jpeg;base64," + b64
@@ -178,10 +183,15 @@ def video_submit(conf, keyframe_path: str, motion: str) -> str:
                "duration": 10, "quality": "speed", "fps": config.FPS}
     backoffs = (0, 120, 300, 600, 900)
     last = ""
+    waited = 0.0
     for attempt, wait in enumerate(backoffs):
         if wait:
+            if backoff_budget is not None and waited + wait > backoff_budget:
+                raise ZaiError(f"429 backoff budget exhausted after {waited:.0f}s "
+                               f"(next would be {wait}s)")
             print(f"[engineA] 429 backoff {wait}s", flush=True)
             time.sleep(wait)
+            waited += wait
         st, body = _http_json(conf, "/video/generation", payload, timeout=120)
         if st == 200 and find_first(body, "id") is not None:
             return str(find_first(body, "id"))
