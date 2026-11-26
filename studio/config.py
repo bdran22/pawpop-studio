@@ -82,6 +82,21 @@ HF_TOKEN = os.environ.get("HF_TOKEN", "")
 WAN_SPACE = os.environ.get("WAN_SPACE", "Upsampler/wan-2-2-14b-image-to-video")
 ENABLE_ENGINE_E = os.environ.get("PAWPOP_ENABLE_ENGINE_E", "1") == "1"
 
+# ------------------------------------------------------------------ ENGINE-F pool (free HF ZeroGPU spaces)
+# Wan2.2-Fast: distilled 6-step Wan2.2, ~50s/clip, returns base64 video
+# (robust against space file-403). Quality-fragile with aggressive motion,
+# so the router only feeds it calm motion prompts. All HF ZeroGPU spaces
+# share ONE daily quota pool per token -> router detects quota exhaustion
+# and demotes E+F for cooldown_hours.
+WANFAST_SPACE = os.environ.get("WANFAST_SPACE", "prithivMLmods/Wan2.2-Fast")
+ENABLE_ENGINE_F = os.environ.get("PAWPOP_ENABLE_ENGINE_F", "1") == "1"
+HF_QUOTA_COOLDOWN_H = float(os.environ.get("PAWPOP_HF_COOLDOWN_H", "3"))
+
+# ENGINE-K: local animated-camera fallback (unlimited, no network). Off by
+# default; producer rounds enable it only for deadline rescue so episodes
+# never ship half-done while waiting for quota/credits.
+ENABLE_ENGINE_K = os.environ.get("PAWPOP_ENABLE_ENGINE_K", "0") == "1"
+
 
 def hf_token() -> str:
     if HF_TOKEN:
