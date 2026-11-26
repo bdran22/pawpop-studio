@@ -71,7 +71,12 @@ def ensure_keyframes(story: dict, ep_dir: Path, deadline: float) -> dict:
         kf, out = shot["kf"], kdir / f"{shot['kf']}.png"
         seed = abs(hash(story["ep"] + kf)) % 1_000_000
         prompt = f"{prefix} {shot['kf_prompt']}".strip()
-        ok = _kf_zai(prompt, out) or _kf_pollinations(prompt, out, seed)
+        # hardened ladder: zai full -> zai short (400-proof) -> pollinations x3 seeds
+        ok = (_kf_zai(prompt, out)
+              or _kf_zai(prompt[:500], out)
+              or _kf_pollinations(prompt, out, seed)
+              or _kf_pollinations(prompt, out, seed + 7777)
+              or _kf_pollinations(prompt, out, seed * 3 + 1))
         if ok:
             have[kf] = str(out)
             print(f"[kf] {kf} ok", flush=True)
