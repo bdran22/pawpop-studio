@@ -154,7 +154,8 @@ def engine_a_shot(keyframe: str, motion: str, out_path: str, status: dict,
         return False
     try:
         # bounded submit backoff: never block a whole round on 429s
-        budget = max(30.0, min(240.0, deadline - time.time()))
+        _cap = float(__import__("os").environ.get("PAWPOP_ZAI_BACKOFF_BUDGET", "240"))
+        budget = max(30.0, min(_cap, deadline - time.time()))
         task_id = zai.video_submit(conf, keyframe, motion,
                                    backoff_budget=budget)
         _remember(status, shot_id, {"engine": "A", "task_id": task_id, "state": "running"})
@@ -209,28 +210,45 @@ def engine_hf_shot(keyframe: str, motion: str, out_path: str, status: dict,
     out = Path(out_path)
     if out.exists() and out.stat().st_size > 200000:
         return True
+    # Lite mode first when a quota pinch is active: a small GPU-second request
+    # can still fit where the full one would be rejected.
+    attempts = [(4, 2.5), (6, 3.5)] if _hf_pinch() else [(6, 3.5), (4, 2.5)]
+    last_err = None
     try:
         from gradio_client import Client, handle_file
         client = Client(config.WAN_SPACE, token=tok, verbose=False,
                         download_files=False)
-        res = client.predict(input_image=handle_file(keyframe), prompt=motion,
-                             steps=6, negative_prompt=_NEG_PROMPT,
-                             duration_seconds=3.5,
-                             guidance_scale=5.0, guidance_scale_2=3.5,
-                             seed=0, randomize_seed=True,
-                             api_name="/generate_video")
-        raw = _extract_video_bytes(res)
-        if raw is None:
-            raise RuntimeError(f"unexpected result shape {str(res)[:120]}")
-        _normalize_to_master(raw, out)
-        if out.stat().st_size > 150000:
-            _remember(status, shot_id, {"engine": "E", "state": "ok",
-                                        "file": str(out), "done_at": time.time()})
-            return True
-        out.unlink(missing_ok=True)
-        _remember(status, shot_id, {"engine": "E", "state": "failed",
-                                    "err": "output too small"})
-        return False
+        for steps, dur in attempts:
+            try:
+                res = client.predict(input_image=handle_file(keyframe),
+                                     prompt=motion,
+                                     steps=steps, negative_prompt=_NEG_PROMPT,
+                                     duration_seconds=dur,
+                                     guidance_scale=5.0, guidance_scale_2=3.5,
+                                     seed=0, randomize_seed=True,
+                                     api_name="/generate_video")
+                raw = _extract_video_bytes(res)
+                if raw is None:
+                    raise RuntimeError(f"unexpected result shape {str(res)[:120]}")
+                _normalize_to_master(raw, out)
+                if out.stat().st_size > 150000:
+                    _remember(status, shot_id,
+                              {"engine": "E", "state": "ok",
+                               "file": str(out), "mode": f"s{steps}d{dur}",
+                               "done_at": time.time()})
+                    return True
+                out.unlink(missing_ok=True)
+                _remember(status, shot_id, {"engine": "E", "state": "failed",
+                                            "err": "output too small"})
+                return False
+            except Exception as e:
+                last_err = e
+                if not _is_quota_error(e):
+                    raise
+                print(f"[engineE:{shot_id}] quota at steps={steps}, "
+                      f"trying smaller", flush=True)
+                _set_pinch()
+        raise last_err if last_err else RuntimeError("all E attempts failed")
     except Exception as e:
         print(f"[engineE:{shot_id}] FAIL {str(e)[:180]}", flush=True)
         _note_hf_quota_error(e)
@@ -253,6 +271,31 @@ def _motion_is_calm(motion: str) -> bool:
 
 _NEG_PROMPT = ("blurry, distorted, deformed, static frame, low quality, "
                "watermark, text, extra limbs, morphing artifacts")
+
+# Quota-pinch tracker: when a ZeroGPU request was rejected for requesting
+# more GPU-seconds than remain, small requests may still fit.
+_PINCH_FILE = Path(config.ASSETS) / "_hf_pinch.json"
+
+
+def _is_quota_error(err) -> bool:
+    low = str(err).lower()
+    return ("zerogpu quota" in low or "exceeded your free" in low
+            or "gpu quota" in low or "requested vs" in low)
+
+
+def _set_pinch():
+    try:
+        _PINCH_FILE.parent.mkdir(parents=True, exist_ok=True)
+        _PINCH_FILE.write_text(json.dumps({"until": time.time() + 30 * 60}))
+    except Exception:
+        pass
+
+
+def _hf_pinch() -> bool:
+    try:
+        return time.time() < json.loads(_PINCH_FILE.read_text()).get("until", 0)
+    except Exception:
+        return False
 
 
 def engine_f_shot(keyframe: str, motion: str, out_path: str, status: dict,
@@ -278,16 +321,29 @@ def engine_f_shot(keyframe: str, motion: str, out_path: str, status: dict,
                         download_files=False)
         b64 = ("data:image/png;base64,"
                + base64.b64encode(Path(keyframe).read_bytes()).decode())
-        res = client.predict(image_b64=b64, prompt=motion, steps=6,
-                             negative_prompt=_NEG_PROMPT,
-                             duration_seconds=4.0,
-                             guidance_scale=4.0, guidance_scale_2=3.0,
-                             seed=0, randomize_seed=True,
-                             api_name="/generate_video")
-        raw = _extract_video_bytes(res)
-        if raw is None:
-            raise RuntimeError(f"unexpected result shape {str(res)[:120]}")
-        _normalize_to_master(raw, out)
+        attempts = [(6, 4.0), (4, 3.0)] if _hf_pinch() else [(6, 4.0)]
+        last_err = None
+        for steps, dur in attempts:
+            try:
+                res = client.predict(image_b64=b64, prompt=motion, steps=steps,
+                                     negative_prompt=_NEG_PROMPT,
+                                     duration_seconds=dur,
+                                     guidance_scale=4.0, guidance_scale_2=3.0,
+                                     seed=0, randomize_seed=True,
+                                     api_name="/generate_video")
+                raw = _extract_video_bytes(res)
+                if raw is None:
+                    raise RuntimeError(f"unexpected result shape {str(res)[:120]}")
+                _normalize_to_master(raw, out)
+                break
+            except Exception as e:
+                last_err = e
+                if not _is_quota_error(e):
+                    raise
+                _set_pinch()
+                print(f"[engineF:{shot_id}] quota at steps={steps}", flush=True)
+        else:
+            raise last_err if last_err else RuntimeError("F attempts exhausted")
         if out.stat().st_size > 150000:
             _remember(status, shot_id, {"engine": "F", "state": "ok",
                                         "file": str(out), "done_at": time.time()})
